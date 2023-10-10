@@ -1,20 +1,17 @@
-#include "main.h"
-
+#include "_putchar.h"
 /**
-*main - function prints text as output
-*
-*Return:return 0
-*/
+ * main - prints the string "_putchar" from a character array.
+ * Return: 0 on success.
+ */
 int main(void)
 {
-	char school[10] = "_putchar";
-
+	char c[] = "_putchar";
 	int i;
 
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < 9; i++)
 	{
-		_putchar(school[i]);
+		_putchar(c[i]);
 	}
-	_putchar(10);
+	_putchar('\n');
 	return (0);
 }
