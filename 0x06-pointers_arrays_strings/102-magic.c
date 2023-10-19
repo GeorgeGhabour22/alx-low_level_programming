@@ -1,4 +1,7 @@
 #include <stdio.h>
+/*
+ *and don’t change anything but the line of code you are adding
+ */
 int main(void)
 {
 int n;
