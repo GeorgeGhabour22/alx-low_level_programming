@@ -42,7 +42,7 @@ new->next = hptr;
 hptr = new;
 add = hptr;
 while (add->next != NULL)
-{	
+{
 add = add->next;
 if (*h == add->p)
 {
