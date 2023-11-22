@@ -1,62 +1,62 @@
-#INCLUDE "LISTS.H"
+#include "lists.h"
 /**
-* FREE_LISTP2 - FREES A LINKED LIST
-* @HEAD: HEAD OF A LIST.
-*
-* RETURN: NO RETURN.
-*/
-VOID FREE_LISTP2(LISTP_T **HEAD)
+ * free_listp2 - frees a linked list
+ * @head: head of a list.
+ *
+ * Return: no return.
+ */
+void free_listp2(listp_t **head)
 {
-LISTP_T *TEMP;
-LISTP_T *CURR;
-IF (HEAD != NULL)
+listp_t *temp;
+listp_t *curr;
+if (head != NULL)
 {
-CURR = *HEAD;
-WHILE ((TEMP = CURR) != NULL)
+curr = *head;
+while ((temp = curr) != NULL)
 {
-CURR = CURR->NEXT;
-FREE(TEMP);
+curr = curr->next;
+free(temp);
 }
-*HEAD = NULL;
+*head = NULL;
 }
 }
 /**
-* FREE_LISTINT_SAFE - FREES A LINKED LIST.
-* @H: HEAD OF A LIST.
-*
-* RETURN: SIZE OF THE LIST THAT WAS FREED.
-*/
-SIZE_T FREE_LISTINT_SAFE(LISTINT_T **H)
+ * free_listint_safe - frees a linked list.
+ * @h: head of a list.
+ *
+ * Return: size of the list that was freed.
+ */
+size_t free_listint_safe(listint_t **h)
 {
-SIZE_T NNODES = 0;
-LISTP_T *HPTR, *NEW, *ADD;
-LISTINT_T *CURR;
-HPTR = NULL;
-WHILE (*H != NULL)
+size_t nnodes = 0;
+listp_t *hptr, *new, *add;
+listint_t *curr;
+hptr = NULL;
+while (*h != NULL)
 {
-NEW = MALLOC(SIZEOF(LISTP_T));
-IF (NEW == NULL)
-EXIT(98);
-NEW->P = (VOID *)*H;
-NEW->NEXT = HPTR;
-HPTR = NEW;
-ADD = HPTR;
-WHILE (ADD->NEXT != NULL)
+new = malloc(sizeof(listp_t));
+if (new == NULL)
+exit(98);
+new->p = (void *)*h;
+new->next = hptr;
+hptr = new;
+add = hptr;
+while (add->next != NULL)
+{	
+add = add->next;
+if (*h == add->p)
 {
-ADD = ADD->NEXT;
-IF (*H == ADD->P)
-{
-*H = NULL;
-FREE_LISTP2(&HPTR);RETURN (NNODES);
+*h = NULL;
+free_listp2(&hptr);
+return (nnodes);
 }
 }
-CURR = *H;
-*H = (*H)->NEXT;
-FREE(CURR);
-NNODES++;
+curr = *h;
+*h = (*h)->next;
+free(curr);
+nnodes++;
 }
-*H = NULL;
-FREE_LISTP2(&HPTR);
-RETURN (NNODES);
+*h = NULL;
+free_listp2(&hptr);
+return (nnodes);
 }
-
